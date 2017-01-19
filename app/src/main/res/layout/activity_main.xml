@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.webianks.library.scrollchoice.MainActivity">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="top"
+        android:background="@drawable/gradient_background"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -13,4 +19,15 @@
         android:layout_height="match_parent" />
 
 
-</RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/gradient_background"
+        android:rotation="180"
+        />
+
+
+
+</FrameLayout>
