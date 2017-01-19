@@ -25,7 +25,7 @@ public class ScrollChoiceAdapter extends RecyclerView.Adapter<ScrollChoiceAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+        View view = inflater.inflate(R.layout.recyclerview_item, parent, false);
         return new ScrollChoiceAdapter.ViewHolder(view);
     }
 
@@ -46,7 +46,7 @@ public class ScrollChoiceAdapter extends RecyclerView.Adapter<ScrollChoiceAdapte
         public ViewHolder(View itemView) {
             super(itemView);
 
-            textView = (TextView) itemView.findViewById(android.R.id.text1);
+            textView = (TextView) itemView.findViewById(R.id.text);
         }
     }
 }
