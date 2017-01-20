@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private String[] choices = {"Hindi", "English", "French", "German", "Spanish", "Belgi",
             "Urdu", "Malyalam", "Udiya", "Telgu", "Tamil"};
 
@@ -16,13 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
 
         ScrollChoiceAdapter scrollChoiceAdapter = new ScrollChoiceAdapter(this, choices);
         recyclerView.setAdapter(scrollChoiceAdapter);
-
 
     }
 }
