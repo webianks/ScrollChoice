@@ -23,7 +23,7 @@
         android:layout_height="300dp" />
 
 
-    <com.lantouzi.wheelview.WheelView
+    <com.webianks.library.scrollchoice.WheelView
         android:id="@+id/wheelview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

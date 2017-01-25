@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
-    private String[] choices = {"Hindi", "English", "French", "German", "Spanish", "Belgi",
-            "Urdu", "Malyalam", "Udiya", "Telgu", "Tamil"};
+    private String[] choices = {"", "", "", "", "", "",
+            "", "", "", "", ""};
+
+    private WheelView mWheelView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,24 @@ public class MainActivity extends AppCompatActivity {
 
         ScrollChoiceAdapter scrollChoiceAdapter = new ScrollChoiceAdapter(this, choices);
         recyclerView.setAdapter(scrollChoiceAdapter);
+
+        mWheelView = (WheelView) findViewById(R.id.wheelview);
+
+        List<String> items = new ArrayList<>();
+        items.add("Hindi");
+        items.add("English");
+        items.add("French");
+        items.add("German");
+        items.add("Spanish");
+        items.add("Belgi");
+        items.add("Urdu");
+        items.add("Malyalam");
+        items.add("Udiya");
+        items.add("Telgu");
+        items.add("Tamil");
+
+        mWheelView.setItems(items);
+        mWheelView.selectIndex(5);
 
     }
 }
