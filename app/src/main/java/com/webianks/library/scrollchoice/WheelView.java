@@ -18,6 +18,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.OverScroller;
 
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ import java.util.List;
 /**
  * Created by kyle on 15/11/9.
  */
-public class WheelView extends View implements GestureDetector.OnGestureListener {
+public class WheelView extends LinearLayout implements GestureDetector.OnGestureListener {
+
     public static final float DEFAULT_INTERVAL_FACTOR = 1.2f;
     public static final float DEFAULT_MARK_RATIO = 0.7f;
 

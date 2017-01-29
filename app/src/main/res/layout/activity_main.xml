@@ -4,23 +4,23 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="com.webianks.library.scrollchoice.MainActivity">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"
         android:background="@drawable/border_background"
-        />
+        android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:visibility="gone"
         android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:overScrollMode="never"
-        android:layout_height="300dp" />
+        android:visibility="gone" />
 
 
     <com.webianks.library.scrollchoice.WheelView
@@ -28,7 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:visibility="gone"
+        android:background="@android:color/white" />
 
 
 </RelativeLayout>
