@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] choices = {"", "", "", "", "", "",
             "", "", "", "", ""};
 
-    private WheelView mWheelView;
+    private ScrollChoice scrollChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         ScrollChoiceAdapter scrollChoiceAdapter = new ScrollChoiceAdapter(this, choices);
         recyclerView.setAdapter(scrollChoiceAdapter);
 
-        mWheelView = (WheelView) findViewById(R.id.wheelview);
+        scrollChoice = (ScrollChoice) findViewById(R.id.scrollchoice);
 
-        List<String> items = new ArrayList<>();
+      /*  List<String> items = new ArrayList<>();
         items.add("Hindi");
         items.add("English");
         items.add("French");
@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
         items.add("Telgu");
         items.add("Tamil");
 
-        mWheelView.setItems(items);
-        mWheelView.selectIndex(5);
+        scrollChoice.setItems(items);*/
 
     }
 }

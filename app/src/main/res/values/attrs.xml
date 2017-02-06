@@ -11,4 +11,7 @@
         <attr name="lwvCenterMarkTextSize" format="dimension"/>
         <attr name="lwvAdditionalCenterMark" format="string|reference"/>
     </declare-styleable>
+
+    <declare-styleable name="ScrollChoice">
+    </declare-styleable>
 </resources>
