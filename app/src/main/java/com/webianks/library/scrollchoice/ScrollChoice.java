@@ -18,7 +18,7 @@ public class ScrollChoice extends View {
 
 
     private ArrayList<String> mItems;
-    private Paint mTextPaint;
+    private Paint paint;
 
     public ScrollChoice(Context context) {
         super(context);
@@ -37,9 +37,9 @@ public class ScrollChoice extends View {
 
     private void init(AttributeSet attrs) {
 
-        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setColor(Color.parseColor("#757575"));
-        mTextPaint.setTextSize(170);
+        paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.FILL);
 
     }
 
@@ -47,7 +47,10 @@ public class ScrollChoice extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawText("Hey folks!", 0, "Hey folks!".length(), mTextPaint);
+        canvas.drawPaint(paint);
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(45);
+        canvas.drawText("Some Text", 100, 250, paint);
     }
 
     public void setItems(List<String> items) {
