@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">ScrollChoice</string>
     <string name="picker_today">today</string>
-    <string name="picker_am">AM</string>
-    <string name="picker_pm">PM</string>
 </resources>
