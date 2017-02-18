@@ -70,18 +70,14 @@ public class ScrollChoice extends WheelPicker {
         data.add("French");
         data.add("German");
         data.add("Spanish");
-        data.add("Belgi");
+        data.add("Portuguese");
         data.add("Urdu");
-        data.add("Malyalam");
+        data.add("Malayalam");
         data.add("Udiya");
         data.add("Telgu");
         data.add("Tamil");
 
-        todayPosition = data.size();
-        defaultIndex = todayPosition;
-
-        //today
-        data.add(getResources().getString(R.string.picker_today));
+        defaultIndex = 5;
 
         adapter.setData(data);
     }
