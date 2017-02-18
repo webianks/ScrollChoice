@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         ScrollChoiceAdapter scrollChoiceAdapter = new ScrollChoiceAdapter(this, choices);
         recyclerView.setAdapter(scrollChoiceAdapter);
 
-        scrollChoice = new ScrollChoice(this);
-
       /*  List<String> items = new ArrayList<>();
         items.add("Hindi");
         items.add("English");
