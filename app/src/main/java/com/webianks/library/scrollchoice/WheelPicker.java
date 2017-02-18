@@ -94,6 +94,7 @@ public abstract class WheelPicker extends View {
 
     private boolean isClick;
     private boolean isForceFinishScroll;
+
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -343,6 +344,7 @@ public abstract class WheelPicker extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+
         if (null != onWheelChangeListener) onWheelChangeListener.onWheelScrolled(scrollOffsetY);
         int drawnDataStartPos = -scrollOffsetY / mItemHeight - mHalfDrawnItemCount;
         for (int drawnDataPos = drawnDataStartPos + selectedItemPosition,
