@@ -26,6 +26,7 @@ public class ScrollChoice extends WheelPicker {
 
     WheelPicker.Adapter adapter;
 
+
     public ScrollChoice(Context context) {
         this(context, null);
     }
@@ -62,27 +63,25 @@ public class ScrollChoice extends WheelPicker {
     }
 
     private void updateDays() {
-        final List<String> data = new ArrayList<>();
 
-        Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DATE, -1 * DAYS_PADDING - 1);
-        for (int i = (-1) * DAYS_PADDING; i < 0; ++i) {
-            instance.add(Calendar.DAY_OF_MONTH, 1);
-            data.add(getFormattedValue(instance.getTime()));
-        }
+        final List<String> data = new ArrayList<>();
+        data.add("Hindi");
+        data.add("English");
+        data.add("French");
+        data.add("German");
+        data.add("Spanish");
+        data.add("Belgi");
+        data.add("Urdu");
+        data.add("Malyalam");
+        data.add("Udiya");
+        data.add("Telgu");
+        data.add("Tamil");
 
         todayPosition = data.size();
         defaultIndex = todayPosition;
 
         //today
         data.add(getResources().getString(R.string.picker_today));
-
-        instance = Calendar.getInstance();
-
-        for (int i = 0; i < DAYS_PADDING; ++i) {
-            instance.add(Calendar.DATE, 1);
-            data.add(getFormattedValue(instance.getTime()));
-        }
 
         adapter.setData(data);
     }
