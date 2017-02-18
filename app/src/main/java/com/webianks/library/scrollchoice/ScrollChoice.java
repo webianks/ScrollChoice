@@ -15,7 +15,6 @@ import java.util.List;
 
 public class ScrollChoice extends WheelPicker {
 
-    public static final int DAYS_PADDING = 364;
     private int defaultIndex;
 
     private int todayPosition;
@@ -47,8 +46,6 @@ public class ScrollChoice extends WheelPicker {
     protected void onItemSelected(int position, Object item) {
         if (null != onDaySelectedListener) {
             final String itemText = (String) item;
-            final Date date = convertItemToDate(position);
-            onDaySelectedListener.onDaySelected(this, position, itemText, date);
         }
     }
 
@@ -96,38 +93,6 @@ public class ScrollChoice extends WheelPicker {
 
     public int getDefaultDayIndex() {
         return defaultIndex;
-    }
-
-    public Date getCurrentDate() {
-        return convertItemToDate(super.getCurrentItemPosition());
-    }
-
-    private Date convertItemToDate(int itemPosition) {
-        Date date = null;
-        String itemText = adapter.getItemText(itemPosition);
-        final Calendar todayCalendar = Calendar.getInstance();
-        if (itemPosition == todayPosition) {
-            date = todayCalendar.getTime();
-        } else {
-            try {
-                date = simpleDateFormat.parse(itemText);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (date != null) {
-            //try to know the year
-            final Calendar dateCalendar = Calendar.getInstance();
-            dateCalendar.setTime(date);
-
-            todayCalendar.add(Calendar.DATE, (itemPosition - todayPosition));
-
-            dateCalendar.set(Calendar.YEAR, todayCalendar.get(Calendar.YEAR));
-            date = dateCalendar.getTime();
-        }
-
-        return date;
     }
 
     public String getCurrentDay() {

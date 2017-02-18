@@ -11,7 +11,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_centerInParent="true"
+
         android:background="@drawable/border_background"
         android:visibility="gone" />
 
@@ -20,12 +20,23 @@
         android:id="@+id/daysPicker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:wheel_atmospheric="true"
         app:wheel_indicator="true"
-        app:wheel_selected_item_text_color="@color/colorAccent"
         app:wheel_indicator_color="@color/colorAccent"
-        app:wheel_item_align="center" />
+        app:wheel_item_align="center"
+        app:wheel_selected_item_text_color="@color/colorAccent" />
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <com.webianks.library.scrollchoice.WheelView
+            android:id="@+id/main_wv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </RelativeLayout>
