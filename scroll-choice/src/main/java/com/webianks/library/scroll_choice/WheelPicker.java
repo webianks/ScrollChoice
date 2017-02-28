@@ -15,7 +15,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Region;
 import android.graphics.Typeface;
@@ -69,7 +68,6 @@ public abstract class WheelPicker extends View {
     private int mItemTextSize;
     private int mIndicatorSize;
     private int mIndicatorColor;
-    private int mCurtainColor;
     private int mItemSpace;
     private int mItemAlign;
     private int mItemHeight, mHalfItemHeight;
@@ -88,7 +86,6 @@ public abstract class WheelPicker extends View {
 
     private boolean hasSameWidth;
     private boolean hasIndicator;
-    private boolean hasCurtain;
     private boolean hasAtmospheric;
     private boolean isCyclic;
     private boolean isCurved;
@@ -158,8 +155,6 @@ public abstract class WheelPicker extends View {
         mIndicatorColor = a.getColor(R.styleable.WheelPicker_wheel_indicator_color, 0xFFEE3333);
         mIndicatorSize = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_indicator_size,
                 getResources().getDimensionPixelSize(R.dimen.WheelIndicatorSize));
-        hasCurtain = a.getBoolean(R.styleable.WheelPicker_wheel_curtain, false);
-        mCurtainColor = a.getColor(R.styleable.WheelPicker_wheel_curtain_color, 0x88FFFFFF);
         hasAtmospheric = a.getBoolean(R.styleable.WheelPicker_wheel_atmospheric, false);
         isCurved = a.getBoolean(R.styleable.WheelPicker_wheel_curved, false);
         mItemAlign = a.getInt(R.styleable.WheelPicker_wheel_item_align, ALIGN_CENTER);
@@ -339,7 +334,7 @@ public abstract class WheelPicker extends View {
     }
 
     private void computeCurrentItemRect() {
-        if (!hasCurtain && mSelectedItemTextColor == -1) return;
+        if (mSelectedItemTextColor == -1) return;
         rectCurrentItem.set(rectDrawn.left, wheelCenterY - mHalfItemHeight, rectDrawn.right,
                 wheelCenterY + mHalfItemHeight);
     }
@@ -350,9 +345,11 @@ public abstract class WheelPicker extends View {
         if (null != onWheelChangeListener) onWheelChangeListener.onWheelScrolled(scrollOffsetY);
         int drawnDataStartPos = -scrollOffsetY / mItemHeight - mHalfDrawnItemCount;
 
+        //this sets background color of the whole view
         paintBackground.setColor(Color.parseColor("#eeeeee"));
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),paintBackground);
 
+        //this sets background color of the selected item
         paintBackground.setColor(Color.parseColor("#ffffff"));
         paintBackground.setStyle(Paint.Style.FILL);
         canvas.drawRect(rectCurrentItem,paintBackground);
@@ -450,12 +447,6 @@ public abstract class WheelPicker extends View {
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
             }
-        }
-        // Need to draw curtain or not
-        if (hasCurtain) {
-            paint.setColor(mCurtainColor);
-            paint.setStyle(Paint.Style.FILL);
-            canvas.drawRect(rectCurrentItem, paint);
         }
         // Need to draw indicator or not
         if (hasIndicator) {
@@ -781,25 +772,6 @@ public abstract class WheelPicker extends View {
 
     public void setIndicatorColor(int color) {
         mIndicatorColor = color;
-        invalidate();
-    }
-
-    public void setCurtain(boolean hasCurtain) {
-        this.hasCurtain = hasCurtain;
-        computeCurrentItemRect();
-        invalidate();
-    }
-
-    public boolean hasCurtain() {
-        return hasCurtain;
-    }
-
-    public int getCurtainColor() {
-        return mCurtainColor;
-    }
-
-    public void setCurtainColor(int color) {
-        mCurtainColor = color;
         invalidate();
     }
 
