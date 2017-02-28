@@ -353,6 +353,10 @@ public abstract class WheelPicker extends View {
         paintBackground.setColor(Color.parseColor("#eeeeee"));
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),paintBackground);
 
+        paintBackground.setColor(Color.parseColor("#ffffff"));
+        paintBackground.setStyle(Paint.Style.FILL);
+        canvas.drawRect(rectCurrentItem,paintBackground);
+
         for (int drawnDataPos = drawnDataStartPos + selectedItemPosition,
              drawnOffsetPos = -mHalfDrawnItemCount;
              drawnDataPos < drawnDataStartPos + selectedItemPosition + mDrawnItemCount;
@@ -428,11 +432,6 @@ public abstract class WheelPicker extends View {
             if (mSelectedItemTextColor != -1) {
                 canvas.save();
                 if (isCurved) canvas.concat(matrixRotate);
-
-                paintBackground.setColor(Color.parseColor("#ffffff"));
-                paint.setStyle(Paint.Style.FILL);
-                canvas.drawRect(rectCurrentItem,paintBackground);
-
                 canvas.clipRect(rectCurrentItem, Region.Op.DIFFERENCE);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
