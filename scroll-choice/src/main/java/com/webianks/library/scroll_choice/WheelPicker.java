@@ -12,8 +12,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Camera;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Region;
 import android.graphics.Typeface;
@@ -41,9 +43,8 @@ public abstract class WheelPicker extends View {
     public static final int ALIGN_LEFT = 1;
     public static final int ALIGN_RIGHT = 2;
 
-    protected final static String FORMAT = "%1$02d"; // two digits
-
     private final Handler handler = new Handler();
+    private final Paint paintBackground;
 
     private Paint paint;
     private Scroller scroller;
@@ -167,6 +168,7 @@ public abstract class WheelPicker extends View {
         updateVisibleItemCount();
 
         paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.LINEAR_TEXT_FLAG);
+        paintBackground = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG );
         paint.setTextSize(mItemTextSize);
 
         updateItemTextAlign();
@@ -347,6 +349,10 @@ public abstract class WheelPicker extends View {
 
         if (null != onWheelChangeListener) onWheelChangeListener.onWheelScrolled(scrollOffsetY);
         int drawnDataStartPos = -scrollOffsetY / mItemHeight - mHalfDrawnItemCount;
+
+        paintBackground.setColor(Color.parseColor("#eeeeee"));
+        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),paintBackground);
+
         for (int drawnDataPos = drawnDataStartPos + selectedItemPosition,
              drawnOffsetPos = -mHalfDrawnItemCount;
              drawnDataPos < drawnDataStartPos + selectedItemPosition + mDrawnItemCount;
@@ -422,6 +428,11 @@ public abstract class WheelPicker extends View {
             if (mSelectedItemTextColor != -1) {
                 canvas.save();
                 if (isCurved) canvas.concat(matrixRotate);
+
+                paintBackground.setColor(Color.parseColor("#ffffff"));
+                paint.setStyle(Paint.Style.FILL);
+                canvas.drawRect(rectCurrentItem,paintBackground);
+
                 canvas.clipRect(rectCurrentItem, Region.Op.DIFFERENCE);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
@@ -432,6 +443,7 @@ public abstract class WheelPicker extends View {
                 canvas.clipRect(rectCurrentItem);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
+
             } else {
                 canvas.save();
                 canvas.clipRect(rectDrawn);
@@ -453,6 +465,7 @@ public abstract class WheelPicker extends View {
             canvas.drawRect(rectIndicatorHead, paint);
             canvas.drawRect(rectIndicatorFoot, paint);
         }
+
     }
 
     private boolean isPosInRang(int position) {

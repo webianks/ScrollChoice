@@ -8,13 +8,6 @@
     android:background="@android:color/white"
     tools:context="com.webianks.library.scrollchoice.MainActivity">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-
-        android:background="@drawable/border_background"
-        android:visibility="gone" />
-
 
     <com.webianks.library.scroll_choice.ScrollChoice
         android:id="@+id/daysPicker"
@@ -25,6 +18,8 @@
         app:wheel_indicator_color="@color/colorAccent"
         app:wheel_item_align="center"
         app:wheel_selected_item_text_color="@color/colorAccent" />
+
+
 
 
 </RelativeLayout>
