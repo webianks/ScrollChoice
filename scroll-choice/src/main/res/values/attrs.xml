@@ -16,7 +16,6 @@
         <attr name="wheel_indicator_color" format="color" />
         <attr name="wheel_indicator_size" format="dimension" />
         <attr name="wheel_atmospheric" format="boolean" />
-        <attr name="wheel_curved" format="boolean" />
         <attr name="wheel_item_align" format="enum">
             <enum name="center" value="0" />
             <enum name="left" value="1" />

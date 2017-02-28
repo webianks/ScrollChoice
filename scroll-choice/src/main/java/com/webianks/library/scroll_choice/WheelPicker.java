@@ -56,8 +56,6 @@ public abstract class WheelPicker extends View {
     private Rect rectIndicatorHead, rectIndicatorFoot;
     private Rect rectCurrentItem;
 
-    private Camera camera;
-    private Matrix matrixRotate, matrixDepth;
     private BaseAdapter adapter;
     private String maxWidthText;
 
@@ -87,7 +85,6 @@ public abstract class WheelPicker extends View {
     private boolean hasSameWidth;
     private boolean hasIndicator;
     private boolean hasAtmospheric;
-    private boolean isCurved;
 
     private boolean isClick;
     private boolean isForceFinishScroll;
@@ -154,7 +151,6 @@ public abstract class WheelPicker extends View {
         mIndicatorSize = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_indicator_size,
                 getResources().getDimensionPixelSize(R.dimen.WheelIndicatorSize));
         hasAtmospheric = a.getBoolean(R.styleable.WheelPicker_wheel_atmospheric, false);
-        isCurved = a.getBoolean(R.styleable.WheelPicker_wheel_curved, false);
         mItemAlign = a.getInt(R.styleable.WheelPicker_wheel_item_align, ALIGN_CENTER);
         a.recycle();
 
@@ -182,11 +178,6 @@ public abstract class WheelPicker extends View {
         rectIndicatorFoot = new Rect();
 
         rectCurrentItem = new Rect();
-
-        camera = new Camera();
-
-        matrixRotate = new Matrix();
-        matrixDepth = new Matrix();
     }
 
     private void updateVisibleItemCount() {
@@ -243,11 +234,6 @@ public abstract class WheelPicker extends View {
         // Correct sizes of original content
         int resultWidth = mTextMaxWidth;
         int resultHeight = mTextMaxHeight * mVisibleItemCount + mItemSpace * (mVisibleItemCount - 1);
-
-        // Correct view sizes again if curved is enable
-        if (isCurved) {
-            resultHeight = (int) (2 * resultHeight / Math.PI);
-        }
 
         // Consideration padding influence the view sizes
         resultWidth += getPaddingLeft() + getPaddingRight();
@@ -366,49 +352,6 @@ public abstract class WheelPicker extends View {
                     scrollOffsetY % mItemHeight;
 
             int distanceToCenter = 0;
-            if (isCurved) {
-                // Correct ratio of item's drawn center to wheel center
-                float ratio = (drawnCenterY - Math.abs(drawnCenterY - mDrawnItemCenterY) -
-                        rectDrawn.top) * 1.0F / (drawnCenterY - rectDrawn.top);
-
-                // Correct unit
-                int unit = 0;
-                if (mDrawnItemCenterY > drawnCenterY) {
-                    unit = 1;
-                } else if (mDrawnItemCenterY < drawnCenterY) unit = -1;
-
-                float degree = (-(1 - ratio) * 90 * unit);
-                if (degree < -90) degree = -90;
-                if (degree > 90) degree = 90;
-                distanceToCenter = computeSpace((int) degree);
-
-                int transX = wheelCenterX;
-                switch (mItemAlign) {
-                    case ALIGN_LEFT:
-                        transX = rectDrawn.left;
-                        break;
-                    case ALIGN_RIGHT:
-                        transX = rectDrawn.right;
-                        break;
-                }
-                int transY = wheelCenterY - distanceToCenter;
-
-                camera.save();
-                camera.rotateX(degree);
-                camera.getMatrix(matrixRotate);
-                camera.restore();
-                matrixRotate.preTranslate(-transX, -transY);
-                matrixRotate.postTranslate(transX, transY);
-
-                camera.save();
-                camera.translate(0, 0, computeDepth((int) degree));
-                camera.getMatrix(matrixDepth);
-                camera.restore();
-                matrixDepth.preTranslate(-transX, -transY);
-                matrixDepth.postTranslate(transX, transY);
-
-                matrixRotate.postConcat(matrixDepth);
-            }
             if (hasAtmospheric) {
                 int alpha =
                         (int) ((drawnCenterY - Math.abs(drawnCenterY - mDrawnItemCenterY)) * 1.0F / drawnCenterY * 255);
@@ -416,19 +359,17 @@ public abstract class WheelPicker extends View {
                 paint.setAlpha(alpha);
             }
             // Correct item's drawn centerY base on curved state
-            int drawnCenterY = isCurved ? this.drawnCenterY - distanceToCenter : mDrawnItemCenterY;
+            int drawnCenterY = mDrawnItemCenterY;
 
             // Judges need to draw different color for current item or not
             if (mSelectedItemTextColor != -1) {
                 canvas.save();
-                if (isCurved) canvas.concat(matrixRotate);
                 canvas.clipRect(rectCurrentItem, Region.Op.DIFFERENCE);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
 
                 paint.setColor(mSelectedItemTextColor);
                 canvas.save();
-                if (isCurved) canvas.concat(matrixRotate);
                 canvas.clipRect(rectCurrentItem);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
@@ -436,7 +377,6 @@ public abstract class WheelPicker extends View {
             } else {
                 canvas.save();
                 canvas.clipRect(rectDrawn);
-                if (isCurved) canvas.concat(matrixRotate);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
             }
@@ -760,16 +700,6 @@ public abstract class WheelPicker extends View {
 
     public boolean hasAtmospheric() {
         return hasAtmospheric;
-    }
-
-    public boolean isCurved() {
-        return isCurved;
-    }
-
-    public void setCurved(boolean isCurved) {
-        this.isCurved = isCurved;
-        requestLayout();
-        invalidate();
     }
 
     public int getItemAlign() {
