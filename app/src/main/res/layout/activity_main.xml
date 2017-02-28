@@ -16,7 +16,7 @@
         android:visibility="gone" />
 
 
-    <com.webianks.library.scrollchoice.ScrollChoice
+    <com.webianks.library.scroll_choice.ScrollChoice
         android:id="@+id/daysPicker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

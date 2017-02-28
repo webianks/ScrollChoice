@@ -1,4 +1,4 @@
-package com.webianks.library.scrollchoice;
+package com.webianks.library.scroll_choice;
 
 /**
  * Created by R Ankit on 17-02-2017.

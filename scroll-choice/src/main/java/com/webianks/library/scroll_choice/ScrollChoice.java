@@ -1,4 +1,4 @@
-package com.webianks.library.scrollchoice;
+package com.webianks.library.scroll_choice;
 
 /**
  * Created by R Ankit on 17-02-2017.
@@ -6,24 +6,19 @@ package com.webianks.library.scrollchoice;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class ScrollChoice extends WheelPicker {
-
-    private int defaultIndex;
-
-    private int todayPosition;
 
     private SimpleDateFormat simpleDateFormat;
 
     private OnDaySelectedListener onDaySelectedListener;
 
     WheelPicker.Adapter adapter;
+    private int defaultIndex;
 
 
     public ScrollChoice(Context context) {
