@@ -27,5 +27,4 @@
         app:wheel_selected_item_text_color="@color/colorAccent" />
 
 
-
 </RelativeLayout>
