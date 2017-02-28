@@ -87,7 +87,6 @@ public abstract class WheelPicker extends View {
     private boolean hasSameWidth;
     private boolean hasIndicator;
     private boolean hasAtmospheric;
-    private boolean isCyclic;
     private boolean isCurved;
 
     private boolean isClick;
@@ -150,7 +149,6 @@ public abstract class WheelPicker extends View {
         mItemTextColor = a.getColor(R.styleable.WheelPicker_wheel_item_text_color, 0xFF888888);
         mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_item_space,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemSpace));
-        isCyclic = a.getBoolean(R.styleable.WheelPicker_wheel_cyclic, false);
         hasIndicator = a.getBoolean(R.styleable.WheelPicker_wheel_indicator, false);
         mIndicatorColor = a.getColor(R.styleable.WheelPicker_wheel_indicator_color, 0xFFEE3333);
         mIndicatorSize = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_indicator_size,
@@ -318,8 +316,8 @@ public abstract class WheelPicker extends View {
 
     private void computeFlingLimitY() {
         int currentItemOffset = selectedItemPosition * mItemHeight;
-        minFlingY = isCyclic ? Integer.MIN_VALUE : -mItemHeight * (adapter.getItemCount() - 1) + currentItemOffset;
-        maxFlingY = isCyclic ? Integer.MAX_VALUE : currentItemOffset;
+        minFlingY = -mItemHeight * (adapter.getItemCount() - 1) + currentItemOffset;
+        maxFlingY = currentItemOffset;
     }
 
     private void computeIndicatorRect() {
@@ -359,14 +357,9 @@ public abstract class WheelPicker extends View {
              drawnDataPos < drawnDataStartPos + selectedItemPosition + mDrawnItemCount;
              drawnDataPos++, drawnOffsetPos++) {
             String data = "";
-            if (isCyclic) {
-                final int itemCount = this.adapter.getItemCount();
-                int actualPos = drawnDataPos % itemCount;
-                actualPos = actualPos < 0 ? (actualPos + itemCount) : actualPos;
-                data = adapter.getItemText(actualPos);
-            } else {
-                if (isPosInRang(drawnDataPos)) data = adapter.getItemText(drawnDataPos);
-            }
+
+            if (isPosInRang(drawnDataPos)) data = adapter.getItemText(drawnDataPos);
+
             paint.setColor(mItemTextColor);
             paint.setStyle(Paint.Style.FILL);
             int mDrawnItemCenterY = drawnCenterY + (drawnOffsetPos * mItemHeight) +
@@ -526,12 +519,7 @@ public abstract class WheelPicker extends View {
                 } else {
                     scroller.startScroll(0, scrollOffsetY, 0, computeDistanceToEndPoint(scrollOffsetY % mItemHeight));
                 }
-                // Correct coordinates
-                if (!isCyclic) {
-                    if (scroller.getFinalY() > maxFlingY) {
-                        scroller.setFinalY(maxFlingY);
-                    } else if (scroller.getFinalY() < minFlingY) scroller.setFinalY(minFlingY);
-                }
+
                 handler.post(runnable);
                 if (null != tracker) {
                     tracker.recycle();
@@ -608,16 +596,6 @@ public abstract class WheelPicker extends View {
         mVisibleItemCount = count;
         updateVisibleItemCount();
         requestLayout();
-    }
-
-    public boolean isCyclic() {
-        return isCyclic;
-    }
-
-    public void setCyclic(boolean isCyclic) {
-        this.isCyclic = isCyclic;
-        computeFlingLimitY();
-        invalidate();
     }
 
     public void setOnItemSelectedListener(OnItemSelectedListener listener) {
