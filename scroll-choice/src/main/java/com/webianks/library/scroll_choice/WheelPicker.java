@@ -10,10 +10,8 @@ import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Region;
@@ -166,12 +164,11 @@ public abstract class WheelPicker extends View {
 
         scroller = new Scroller(getContext());
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
-            ViewConfiguration conf = ViewConfiguration.get(getContext());
-            minimumVelocity = conf.getScaledMinimumFlingVelocity();
-            maximumVelocity = conf.getScaledMaximumFlingVelocity();
-            touchSlop = conf.getScaledTouchSlop();
-        }
+
+        ViewConfiguration conf = ViewConfiguration.get(getContext());
+        minimumVelocity = conf.getScaledMinimumFlingVelocity();
+        maximumVelocity = conf.getScaledMaximumFlingVelocity();
+        touchSlop = conf.getScaledTouchSlop();
         rectDrawn = new Rect();
 
         rectIndicatorHead = new Rect();
