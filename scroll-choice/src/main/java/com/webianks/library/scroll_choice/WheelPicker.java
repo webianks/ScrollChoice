@@ -145,7 +145,7 @@ public abstract class WheelPicker extends View {
         mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_item_space,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemSpace));
         hasIndicator = a.getBoolean(R.styleable.WheelPicker_wheel_indicator, false);
-        mIndicatorColor = a.getColor(R.styleable.WheelPicker_wheel_indicator_color, 0xFFEE3333);
+        mIndicatorColor = a.getColor(R.styleable.WheelPicker_wheel_indicator_color, 0xFFDDDDDD);
         mIndicatorSize = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_indicator_size,
                 getResources().getDimensionPixelSize(R.dimen.WheelIndicatorSize));
         hasAtmospheric = a.getBoolean(R.styleable.WheelPicker_wheel_atmospheric, false);
@@ -348,7 +348,6 @@ public abstract class WheelPicker extends View {
             int mDrawnItemCenterY = drawnCenterY + (drawnOffsetPos * mItemHeight) +
                     scrollOffsetY % mItemHeight;
 
-            int distanceToCenter = 0;
             if (hasAtmospheric) {
                 int alpha =
                         (int) ((drawnCenterY - Math.abs(drawnCenterY - mDrawnItemCenterY)) * 1.0F / drawnCenterY * 255);
@@ -366,6 +365,7 @@ public abstract class WheelPicker extends View {
                 canvas.restore();
 
                 paint.setColor(mSelectedItemTextColor);
+                paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                 canvas.save();
                 canvas.clipRect(rectCurrentItem);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
