@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="WheelItemTextSize">19sp</dimen>
-    <dimen name="WheelItemSpace">40dp</dimen>
+    <dimen name="WheelItemSpace">0dp</dimen>
     <dimen name="WheelIndicatorSize">1.5dp</dimen>
     <dimen name="WheelMargins">0dp</dimen>
     <dimen name="wheel_spacing">5dp</dimen>

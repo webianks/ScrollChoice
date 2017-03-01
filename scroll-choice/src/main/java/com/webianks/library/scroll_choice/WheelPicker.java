@@ -80,7 +80,6 @@ public abstract class WheelPicker extends View {
     private int downPointY;
     private int touchSlop = 8;
 
-    private boolean hasSameWidth;
     private boolean hasIndicator;
     private boolean hasAtmospheric;
 
@@ -137,11 +136,10 @@ public abstract class WheelPicker extends View {
                 getResources().getDimensionPixelSize(R.dimen.WheelItemTextSize));
         mVisibleItemCount = a.getInt(R.styleable.WheelPicker_wheel_visible_item_count, 7);
         selectedItemPosition = a.getInt(R.styleable.WheelPicker_wheel_selected_item_position, 0);
-        hasSameWidth = a.getBoolean(R.styleable.WheelPicker_wheel_same_width, false);
         textMaxWidthPosition = a.getInt(R.styleable.WheelPicker_wheel_maximum_width_text_position, -1);
         maxWidthText = a.getString(R.styleable.WheelPicker_wheel_maximum_width_text);
         mSelectedItemTextColor = a.getColor(R.styleable.WheelPicker_wheel_selected_item_text_color, -1);
-        mItemTextColor = a.getColor(R.styleable.WheelPicker_wheel_item_text_color, 0xFF888888);
+        mItemTextColor = a.getColor(R.styleable.WheelPicker_wheel_item_text_color, 0xFF424242);
         mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_item_space,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemSpace));
         hasIndicator = a.getBoolean(R.styleable.WheelPicker_wheel_indicator, false);
@@ -188,9 +186,8 @@ public abstract class WheelPicker extends View {
 
     private void computeTextSize() {
         mTextMaxWidth = mTextMaxHeight = 0;
-        if (hasSameWidth) {
-            mTextMaxWidth = (int) paint.measureText(adapter.getItemText(0));
-        } else if (isPosInRang(textMaxWidthPosition)) {
+
+        if (isPosInRang(textMaxWidthPosition)) {
             mTextMaxWidth = (int) paint.measureText(adapter.getItemText(textMaxWidthPosition));
         } else if (!TextUtils.isEmpty(maxWidthText)) {
             mTextMaxWidth = (int) paint.measureText(maxWidthText);
@@ -327,7 +324,7 @@ public abstract class WheelPicker extends View {
         int drawnDataStartPos = -scrollOffsetY / mItemHeight - mHalfDrawnItemCount;
 
         //this sets background color of the whole view
-        paintBackground.setColor(Color.parseColor("#eeeeee"));
+        paintBackground.setColor(Color.parseColor("#f5f5f5"));
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),paintBackground);
 
         //this sets background color of the selected item
@@ -580,17 +577,6 @@ public abstract class WheelPicker extends View {
         computeFlingLimitY();
         requestLayout();
         invalidate();
-    }
-
-    public void setSameWidth(boolean hasSameWidth) {
-        this.hasSameWidth = hasSameWidth;
-        computeTextSize();
-        requestLayout();
-        invalidate();
-    }
-
-    public boolean hasSameWidth() {
-        return hasSameWidth;
     }
 
     public void setOnWheelChangeListener(OnWheelChangeListener listener) {
