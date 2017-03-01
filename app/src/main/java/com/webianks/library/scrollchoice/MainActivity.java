@@ -2,6 +2,7 @@ package com.webianks.library.scrollchoice;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.webianks.library.scroll_choice.ScrollChoice;
 
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         data.add("Tamil");
 
         scrollChoice.addItems(data,5);
-
+        scrollChoice.setOnItemSelectedListener(new ScrollChoice.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(ScrollChoice scrollChoice, int position, String name) {
+                Log.d("webi",name);
+            }
+        });
     }
 }

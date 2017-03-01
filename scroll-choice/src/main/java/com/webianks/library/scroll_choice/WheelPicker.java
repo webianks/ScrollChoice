@@ -729,9 +729,8 @@ public abstract class WheelPicker extends View {
         String getItemText(int position);
     }
 
-    public interface OnItemSelectedListener {
+    private interface OnItemSelectedListener {
         void onItemSelected(WheelPicker picker, Object data, int position);
-
         void onCurrentItemOfScroll(WheelPicker picker, int position);
     }
 

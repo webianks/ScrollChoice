@@ -32,6 +32,7 @@ public class ScrollChoice extends WheelPicker {
     protected void onItemSelected(int position, Object item) {
         if (null != onItemSelectedListener) {
             final String itemText = (String) item;
+            onItemSelectedListener.onItemSelected(this,position,itemText);
         }
     }
 
@@ -52,7 +53,7 @@ public class ScrollChoice extends WheelPicker {
     }
 
 
-    public void setOnDaySelectedListener(OnItemSelectedListener onItemSelectedListener) {
+    public void setOnItemSelectedListener(OnItemSelectedListener onItemSelectedListener) {
         this.onItemSelectedListener = onItemSelectedListener;
     }
 
