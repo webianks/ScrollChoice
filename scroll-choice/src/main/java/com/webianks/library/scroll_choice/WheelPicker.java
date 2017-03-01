@@ -341,6 +341,7 @@ public abstract class WheelPicker extends View {
             if (isPosInRang(drawnDataPos)) data = adapter.getItemText(drawnDataPos);
 
             paint.setColor(mItemTextColor);
+            paint.setTextSize(mItemTextSize);
             paint.setStyle(Paint.Style.FILL);
             paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
 
@@ -365,6 +366,7 @@ public abstract class WheelPicker extends View {
 
                 paint.setColor(mSelectedItemTextColor);
                 paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+                paint.setTextSize(mItemTextSize+10);
 
                 canvas.save();
                 canvas.clipRect(rectCurrentItem);
