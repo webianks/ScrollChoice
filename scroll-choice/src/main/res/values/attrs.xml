@@ -2,20 +2,20 @@
 <resources>
 
     <declare-styleable name="WheelPicker">
-        <attr name="wheel_data" format="reference" />
-        <attr name="wheel_selected_item_position" format="integer" />
-        <attr name="wheel_item_text_size" format="dimension" />
-        <attr name="wheel_item_text_color" format="color" />
-        <attr name="wheel_selected_item_text_color" format="color" />
-        <attr name="wheel_maximum_width_text" format="string" />
-        <attr name="wheel_maximum_width_text_position" format="integer" />
-        <attr name="wheel_visible_item_count" format="integer" />
-        <attr name="wheel_item_space" format="dimension" />
-        <attr name="wheel_indicator" format="boolean" />
-        <attr name="wheel_indicator_color" format="color" />
-        <attr name="wheel_indicator_size" format="dimension" />
-        <attr name="wheel_atmospheric" format="boolean" />
-        <attr name="wheel_item_align" format="enum">
+        <attr name="scroll_data" format="reference" />
+        <attr name="scroll_selected_item_position" format="integer" />
+        <attr name="scroll_item_text_size" format="dimension" />
+        <attr name="scroll_item_text_color" format="color" />
+        <attr name="scroll_selected_item_text_color" format="color" />
+        <attr name="scroll_maximum_width_text" format="string" />
+        <attr name="scroll_maximum_width_text_position" format="integer" />
+        <attr name="scroll_visible_item_count" format="integer" />
+        <attr name="scroll_item_space" format="dimension" />
+        <attr name="scroll_indicator" format="boolean" />
+        <attr name="scroll_indicator_color" format="color" />
+        <attr name="scroll_indicator_size" format="dimension" />
+        <attr name="scroll_atmospheric" format="boolean" />
+        <attr name="scroll_item_align" format="enum">
             <enum name="center" value="0" />
             <enum name="left" value="1" />
             <enum name="right" value="2" />

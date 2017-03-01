@@ -12,18 +12,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorAccent"
-        >
+        android:background="?attr/colorAccent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Choose a language to continue"
             android:padding="16dp"
-            android:textSize="17sp"
+            android:text="Choose a language to continue"
             android:textColor="#ffffff"
-            />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -31,11 +29,10 @@
         android:id="@+id/scroll_choice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:wheel_atmospheric="true"
-        app:wheel_indicator="true"
-        app:wheel_item_space="30dp"
-        app:wheel_item_align="center"
-        app:wheel_selected_item_text_color="@color/colorAccent" />
-
+        app:scroll_atmospheric="true"
+        app:scroll_indicator="true"
+        app:scroll_item_align="center"
+        app:scroll_item_space="30dp"
+        app:scroll_selected_item_text_color="@color/colorAccent" />
 
 </LinearLayout>

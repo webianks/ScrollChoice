@@ -132,22 +132,22 @@ public abstract class WheelPicker extends View {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WheelPicker);
 
-        mItemTextSize = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_item_text_size,
+        mItemTextSize = a.getDimensionPixelSize(R.styleable.WheelPicker_scroll_item_text_size,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemTextSize));
-        mVisibleItemCount = a.getInt(R.styleable.WheelPicker_wheel_visible_item_count, 7);
-        selectedItemPosition = a.getInt(R.styleable.WheelPicker_wheel_selected_item_position, 0);
-        textMaxWidthPosition = a.getInt(R.styleable.WheelPicker_wheel_maximum_width_text_position, -1);
-        maxWidthText = a.getString(R.styleable.WheelPicker_wheel_maximum_width_text);
-        mSelectedItemTextColor = a.getColor(R.styleable.WheelPicker_wheel_selected_item_text_color, -1);
-        mItemTextColor = a.getColor(R.styleable.WheelPicker_wheel_item_text_color, 0xFF424242);
-        mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_item_space,
+        mVisibleItemCount = a.getInt(R.styleable.WheelPicker_scroll_visible_item_count, 7);
+        selectedItemPosition = a.getInt(R.styleable.WheelPicker_scroll_selected_item_position, 0);
+        textMaxWidthPosition = a.getInt(R.styleable.WheelPicker_scroll_maximum_width_text_position, -1);
+        maxWidthText = a.getString(R.styleable.WheelPicker_scroll_maximum_width_text);
+        mSelectedItemTextColor = a.getColor(R.styleable.WheelPicker_scroll_selected_item_text_color, -1);
+        mItemTextColor = a.getColor(R.styleable.WheelPicker_scroll_item_text_color, 0xFF424242);
+        mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_scroll_item_space,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemSpace));
-        hasIndicator = a.getBoolean(R.styleable.WheelPicker_wheel_indicator, false);
-        mIndicatorColor = a.getColor(R.styleable.WheelPicker_wheel_indicator_color, 0xFFDDDDDD);
-        mIndicatorSize = a.getDimensionPixelSize(R.styleable.WheelPicker_wheel_indicator_size,
+        hasIndicator = a.getBoolean(R.styleable.WheelPicker_scroll_indicator, false);
+        mIndicatorColor = a.getColor(R.styleable.WheelPicker_scroll_indicator_color, 0xFFDDDDDD);
+        mIndicatorSize = a.getDimensionPixelSize(R.styleable.WheelPicker_scroll_indicator_size,
                 getResources().getDimensionPixelSize(R.dimen.WheelIndicatorSize));
-        hasAtmospheric = a.getBoolean(R.styleable.WheelPicker_wheel_atmospheric, false);
-        mItemAlign = a.getInt(R.styleable.WheelPicker_wheel_item_align, ALIGN_CENTER);
+        hasAtmospheric = a.getBoolean(R.styleable.WheelPicker_scroll_atmospheric, false);
+        mItemAlign = a.getInt(R.styleable.WheelPicker_scroll_item_align, ALIGN_CENTER);
         a.recycle();
 
         updateVisibleItemCount();
