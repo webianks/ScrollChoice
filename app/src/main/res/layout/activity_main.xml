@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <com.webianks.library.scroll_choice.ScrollChoice
-        android:id="@+id/daysPicker"
+        android:id="@+id/scroll_choice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:wheel_atmospheric="true"

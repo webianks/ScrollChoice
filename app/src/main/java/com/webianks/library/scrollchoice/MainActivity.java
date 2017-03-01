@@ -5,14 +5,34 @@ import android.os.Bundle;
 
 import com.webianks.library.scroll_choice.ScrollChoice;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private String[] choices = {"", "", "", "", "", "",
-            "", "", "", "", ""};
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        ScrollChoice scrollChoice = (ScrollChoice) findViewById(R.id.scroll_choice);
+
+
+        List<String> data = new ArrayList<>();
+        data.add("Hindi");
+        data.add("English");
+        data.add("French");
+        data.add("German");
+        data.add("Spanish");
+        data.add("Portuguese");
+        data.add("Urdu");
+        data.add("Malayalam");
+        data.add("Udiya");
+        data.add("Telgu");
+        data.add("Tamil");
+
+        scrollChoice.addItems(data,5);
+
     }
 }

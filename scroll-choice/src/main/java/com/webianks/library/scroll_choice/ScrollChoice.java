@@ -16,7 +16,6 @@ public class ScrollChoice extends WheelPicker {
     WheelPicker.Adapter adapter;
     private int defaultIndex;
 
-
     public ScrollChoice(Context context) {
         this(context, null);
     }
@@ -26,11 +25,7 @@ public class ScrollChoice extends WheelPicker {
 
         this.adapter = new Adapter();
         setAdapter(adapter);
-
-        updateItems();
-        updateDefaultItem();
     }
-
 
 
     @Override
@@ -50,25 +45,10 @@ public class ScrollChoice extends WheelPicker {
         return defaultIndex;
     }
 
-
-    private void updateItems() {
-
-        final List<String> data = new ArrayList<>();
-        data.add("Hindi");
-        data.add("English");
-        data.add("French");
-        data.add("German");
-        data.add("Spanish");
-        data.add("Portuguese");
-        data.add("Urdu");
-        data.add("Malayalam");
-        data.add("Udiya");
-        data.add("Telgu");
-        data.add("Tamil");
-
-        defaultIndex = 5;
-
+    public void addItems(List<String> data,int defaultIndex) {
+        this.defaultIndex = defaultIndex;
         adapter.setData(data);
+        updateDefaultItem();
     }
 
 
