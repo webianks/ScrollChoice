@@ -8,6 +8,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,8 +59,10 @@ public class ScrollChoice extends LinearLayout {
         headerLayout.setLayoutParams(lparams);
         headerLayout.setBackgroundColor(Color.parseColor("#FFC107"));
 
+        int px16 = dipToPixels(context,16);
+
         TextView textView = new TextView(context);
-        textView.setPadding(16,16,16,16);
+        textView.setPadding(px16,px16,px16,px16);
         textView.setTextColor(Color.parseColor("#ffffff"));
         textView.setTypeface(Typeface.DEFAULT,Typeface.BOLD);
         textView.setText("Choose a language to continue");
@@ -133,4 +137,9 @@ public class ScrollChoice extends LinearLayout {
     public interface OnDaySelectedListener {
         void onDaySelected(ScrollChoice scrollChoice, int position, String name, Date date);
     }*/
+
+    public int dipToPixels(Context context, float dipValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
+    }
 }
