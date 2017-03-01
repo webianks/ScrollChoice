@@ -345,6 +345,8 @@ public abstract class WheelPicker extends View {
 
             paint.setColor(mItemTextColor);
             paint.setStyle(Paint.Style.FILL);
+            paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
+
             int mDrawnItemCenterY = drawnCenterY + (drawnOffsetPos * mItemHeight) +
                     scrollOffsetY % mItemHeight;
 
@@ -366,12 +368,14 @@ public abstract class WheelPicker extends View {
 
                 paint.setColor(mSelectedItemTextColor);
                 paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+
                 canvas.save();
                 canvas.clipRect(rectCurrentItem);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
 
             } else {
+
                 canvas.save();
                 canvas.clipRect(rectDrawn);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
