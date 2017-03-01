@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context="com.webianks.library.scrollchoice.MainActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Choose a language to continue"
+            android:padding="16dp"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
 
     <com.webianks.library.scroll_choice.ScrollChoice
         android:id="@+id/daysPicker"
@@ -20,4 +37,4 @@
         app:wheel_selected_item_text_color="@color/colorAccent" />
 
 
-</RelativeLayout>
+</LinearLayout>
