@@ -9,6 +9,23 @@
     tools:context="com.webianks.library.scrollchoice.MainActivity">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Choose a language to continue"
+            android:padding="16dp"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
+
     <com.webianks.library.scroll_choice.ScrollChoice
         android:id="@+id/daysPicker"
         android:layout_width="match_parent"

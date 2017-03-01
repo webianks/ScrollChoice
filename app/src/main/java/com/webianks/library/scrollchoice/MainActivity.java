@@ -10,8 +10,6 @@ public class MainActivity extends AppCompatActivity {
     private String[] choices = {"", "", "", "", "", "",
             "", "", "", "", ""};
 
-    private ScrollChoice scrollChoice;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

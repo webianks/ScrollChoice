@@ -5,23 +5,17 @@ package com.webianks.library.scroll_choice;
  */
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class ScrollChoice extends LinearLayout {
+public class ScrollChoice extends WheelPicker {
 
     private SimpleDateFormat simpleDateFormat;
 
-    //private OnDaySelectedListener onDaySelectedListener;
+    private OnDaySelectedListener onDaySelectedListener;
 
     WheelPicker.Adapter adapter;
     private int defaultIndex;
@@ -29,59 +23,27 @@ public class ScrollChoice extends LinearLayout {
 
     public ScrollChoice(Context context) {
         this(context, null);
-
-        init(context);
     }
 
     public ScrollChoice(Context context, AttributeSet attrs) {
         super(context, attrs);
-/*
+
         this.simpleDateFormat = new SimpleDateFormat("EEE d MMM", getCurrentLocale());
         this.adapter = new Adapter();
         setAdapter(adapter);
 
         updateDays();
-        updateDefaultDay();*/
-        init(context);
+        updateDefaultDay();
     }
 
 
-    private void init(Context context) {
 
-        LayoutParams lparams = new LayoutParams(
-                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        setLayoutParams(lparams);
-
-        setOrientation(VERTICAL);
-
-        LinearLayout headerLayout = new LinearLayout(context);
-
-        headerLayout.setLayoutParams(lparams);
-        headerLayout.setBackgroundColor(Color.parseColor("#FFC107"));
-
-        int px16 = dipToPixels(context,16);
-
-        TextView textView = new TextView(context);
-        textView.setPadding(px16,px16,px16,px16);
-        textView.setTextColor(Color.parseColor("#ffffff"));
-        textView.setTypeface(Typeface.DEFAULT,Typeface.BOLD);
-        textView.setText("Choose a language to continue");
-
-        headerLayout.addView(textView);
-
-        addView(headerLayout);
-
-
-    }
-
-/*
     @Override
     protected void onItemSelected(int position, Object item) {
         if (null != onDaySelectedListener) {
             final String itemText = (String) item;
         }
-    }*/
-/*
+    }
 
     @Override
     protected void onItemCurrentScroll(int position, Object item) {
@@ -92,7 +54,7 @@ public class ScrollChoice extends LinearLayout {
     public int getDefaultItemPosition() {
         return defaultIndex;
     }
-*/
+
 
     private void updateDays() {
 
@@ -113,7 +75,7 @@ public class ScrollChoice extends LinearLayout {
 
         adapter.setData(data);
     }
-/*
+
     protected String getFormattedValue(Object value) {
         return simpleDateFormat.format(value);
     }
@@ -136,10 +98,5 @@ public class ScrollChoice extends LinearLayout {
 
     public interface OnDaySelectedListener {
         void onDaySelected(ScrollChoice scrollChoice, int position, String name, Date date);
-    }*/
-
-    public int dipToPixels(Context context, float dipValue) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 }
