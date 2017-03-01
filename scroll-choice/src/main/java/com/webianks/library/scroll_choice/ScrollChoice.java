@@ -6,16 +6,12 @@ package com.webianks.library.scroll_choice;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ScrollChoice extends WheelPicker {
 
-    private SimpleDateFormat simpleDateFormat;
-
-    private OnDaySelectedListener onDaySelectedListener;
+    private OnItemSelectedListener onItemSelectedListener;
 
     WheelPicker.Adapter adapter;
     private int defaultIndex;
@@ -28,19 +24,18 @@ public class ScrollChoice extends WheelPicker {
     public ScrollChoice(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        this.simpleDateFormat = new SimpleDateFormat("EEE d MMM", getCurrentLocale());
         this.adapter = new Adapter();
         setAdapter(adapter);
 
-        updateDays();
-        updateDefaultDay();
+        updateItems();
+        updateDefaultItem();
     }
 
 
 
     @Override
     protected void onItemSelected(int position, Object item) {
-        if (null != onDaySelectedListener) {
+        if (null != onItemSelectedListener) {
             final String itemText = (String) item;
         }
     }
@@ -56,7 +51,7 @@ public class ScrollChoice extends WheelPicker {
     }
 
 
-    private void updateDays() {
+    private void updateItems() {
 
         final List<String> data = new ArrayList<>();
         data.add("Hindi");
@@ -76,27 +71,20 @@ public class ScrollChoice extends WheelPicker {
         adapter.setData(data);
     }
 
-    protected String getFormattedValue(Object value) {
-        return simpleDateFormat.format(value);
+
+    public void setOnDaySelectedListener(OnItemSelectedListener onItemSelectedListener) {
+        this.onItemSelectedListener = onItemSelectedListener;
     }
 
-    public void setOnDaySelectedListener(OnDaySelectedListener onDaySelectedListener) {
-        this.onDaySelectedListener = onDaySelectedListener;
-    }
+    private void updateDefaultItem() {setSelectedItemPosition(defaultIndex);}
 
-    private void updateDefaultDay() {
-        setSelectedItemPosition(defaultIndex);
-    }
+    public int getDefaultItemIndex() {return defaultIndex;}
 
-    public int getDefaultDayIndex() {
-        return defaultIndex;
-    }
-
-    public String getCurrentDay() {
+    public String getCurrentSelection() {
         return adapter.getItemText(getCurrentItemPosition());
     }
 
-    public interface OnDaySelectedListener {
-        void onDaySelected(ScrollChoice scrollChoice, int position, String name, Date date);
+    public interface OnItemSelectedListener {
+        void onItemSelected(ScrollChoice scrollChoice, int position, String name);
     }
 }

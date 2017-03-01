@@ -524,8 +524,6 @@ public abstract class WheelPicker extends View {
 
     protected abstract void onItemCurrentScroll(int position, Object item);
 
-    protected abstract String getFormattedValue(Object value);
-
     public int getVisibleItemCount() {
         return mVisibleItemCount;
     }
@@ -710,29 +708,6 @@ public abstract class WheelPicker extends View {
         computeTextSize();
         requestLayout();
         invalidate();
-    }
-
-    public int findIndexOfDate(Date date) {
-        if (date == null) {
-            return 0;
-        }
-
-        String formatItem = getFormattedValue(date);
-
-        String today=getFormattedValue(new Date());
-        if(today.equals(formatItem)){
-            return getDefaultItemPosition();
-        }
-
-        final int itemCount = adapter.getItemCount();
-        for (int i = 0; i < itemCount; ++i) {
-            final String object = adapter.getItemText(i);
-
-            if (formatItem.equals(object)) {
-                return i;
-            }
-        }
-        return 0;
     }
 
     @TargetApi(Build.VERSION_CODES.N)
