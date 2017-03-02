@@ -86,6 +86,9 @@ public abstract class WheelPicker extends View {
     private boolean isClick;
     private boolean isForceFinishScroll;
 
+    private int BACKGROUND_COLOR = 0xFFF5F5F5;
+    private int BACKGROUND_OF_SELECTED_ITEM = 0xFFFFFFFF;
+
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -324,11 +327,11 @@ public abstract class WheelPicker extends View {
         int drawnDataStartPos = -scrollOffsetY / mItemHeight - mHalfDrawnItemCount;
 
         //this sets background color of the whole view
-        paintBackground.setColor(Color.parseColor("#f5f5f5"));
+        paintBackground.setColor(BACKGROUND_COLOR);
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),paintBackground);
 
         //this sets background color of the selected item
-        paintBackground.setColor(Color.parseColor("#ffffff"));
+        paintBackground.setColor(BACKGROUND_OF_SELECTED_ITEM);
         paintBackground.setStyle(Paint.Style.FILL);
         canvas.drawRect(rectCurrentItem,paintBackground);
 

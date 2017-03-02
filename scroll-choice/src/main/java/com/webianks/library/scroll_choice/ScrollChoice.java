@@ -6,7 +6,6 @@ package com.webianks.library.scroll_choice;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScrollChoice extends WheelPicker {
@@ -22,11 +21,9 @@ public class ScrollChoice extends WheelPicker {
 
     public ScrollChoice(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         this.adapter = new Adapter();
         setAdapter(adapter);
     }
-
 
     @Override
     protected void onItemSelected(int position, Object item) {
@@ -38,7 +35,6 @@ public class ScrollChoice extends WheelPicker {
 
     @Override
     protected void onItemCurrentScroll(int position, Object item) {
-
     }
 
     @Override
