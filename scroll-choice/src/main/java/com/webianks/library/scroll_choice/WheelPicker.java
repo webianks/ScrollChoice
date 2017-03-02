@@ -86,8 +86,8 @@ public abstract class WheelPicker extends View {
     private boolean isClick;
     private boolean isForceFinishScroll;
 
-    private int BACKGROUND_COLOR = 0xFFF5F5F5;
-    private int BACKGROUND_OF_SELECTED_ITEM = 0xFFFFFFFF;
+    private int backgroundColor;
+    private int backgroundOfSelectedItem;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -143,6 +143,8 @@ public abstract class WheelPicker extends View {
         maxWidthText = a.getString(R.styleable.WheelPicker_scroll_maximum_width_text);
         mSelectedItemTextColor = a.getColor(R.styleable.WheelPicker_scroll_selected_item_text_color, -1);
         mItemTextColor = a.getColor(R.styleable.WheelPicker_scroll_item_text_color, 0xFF424242);
+        backgroundColor = a.getColor(R.styleable.WheelPicker_scroll_background_color, 0xFFF5F5F5);
+        backgroundOfSelectedItem = a.getColor(R.styleable.WheelPicker_scroll_slected_item_background, 0xFFFFFFFF);
         mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_scroll_item_space,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemSpace));
         hasIndicator = a.getBoolean(R.styleable.WheelPicker_scroll_indicator, false);
@@ -327,11 +329,11 @@ public abstract class WheelPicker extends View {
         int drawnDataStartPos = -scrollOffsetY / mItemHeight - mHalfDrawnItemCount;
 
         //this sets background color of the whole view
-        paintBackground.setColor(BACKGROUND_COLOR);
+        paintBackground.setColor(backgroundColor);
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(),paintBackground);
 
         //this sets background color of the selected item
-        paintBackground.setColor(BACKGROUND_OF_SELECTED_ITEM);
+        paintBackground.setColor(backgroundOfSelectedItem);
         paintBackground.setStyle(Paint.Style.FILL);
         canvas.drawRect(rectCurrentItem,paintBackground);
 
