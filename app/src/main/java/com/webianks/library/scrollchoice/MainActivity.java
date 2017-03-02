@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         List<String> data = new ArrayList<>();
-        data.add("Hindi");
-        data.add("English");
-        data.add("French");
-        data.add("German");
-        data.add("Spanish");
-        data.add("Portuguese");
-        data.add("Urdu");
-        data.add("Malayalam");
-        data.add("Udiya");
-        data.add("Telgu");
-        data.add("Tamil");
+        data.add("Brazil");
+        data.add("USA");
+        data.add("China");
+        data.add("Pakistan");
+        data.add("Australia");
+        data.add("India");
+        data.add("Nepal");
+        data.add("Sri Lanka");
+        data.add("Spain");
+        data.add("Italy");
+        data.add("France");
 
         scrollChoice.addItems(data,5);
         scrollChoice.setOnItemSelectedListener(new ScrollChoice.OnItemSelectedListener() {
