@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'scroll-choice'
+
+    publishedGroupId = 'com.webianks.library'
+    libraryName = 'scroll-choice'
+    artifact = 'scroll-choice'
+
+    libraryDescription = 'Scrollable view which can be used to give different choices to user with nice ui.'
+
+    siteUrl = 'http://www.webianks.com/scrollchoice'
+    gitUrl = 'https://github.com/webianks/ScrollChoice.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'webianks'
+    developerName = 'Ramankit Singh'
+    developerEmail = 'webianks@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT License"]
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -24,3 +48,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
 }
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
