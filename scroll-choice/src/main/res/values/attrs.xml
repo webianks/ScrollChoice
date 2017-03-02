@@ -3,6 +3,8 @@
 
     <declare-styleable name="WheelPicker">
         <attr name="scroll_data" format="reference" />
+        <attr name="scroll_background_color" format="color" />
+        <attr name="scroll_slected_item_background" format="color" />
         <attr name="scroll_selected_item_position" format="integer" />
         <attr name="scroll_item_text_size" format="dimension" />
         <attr name="scroll_item_text_color" format="color" />
