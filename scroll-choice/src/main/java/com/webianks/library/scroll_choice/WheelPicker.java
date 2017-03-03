@@ -11,7 +11,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Region;
@@ -26,7 +25,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.Scroller;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -144,7 +142,7 @@ public abstract class WheelPicker extends View {
         mSelectedItemTextColor = a.getColor(R.styleable.WheelPicker_scroll_selected_item_text_color, -1);
         mItemTextColor = a.getColor(R.styleable.WheelPicker_scroll_item_text_color, 0xFF424242);
         backgroundColor = a.getColor(R.styleable.WheelPicker_scroll_background_color, 0xFFF5F5F5);
-        backgroundOfSelectedItem = a.getColor(R.styleable.WheelPicker_scroll_slected_item_background, 0xFFFFFFFF);
+        backgroundOfSelectedItem = a.getColor(R.styleable.WheelPicker_scroll_selected_item_background, 0xFFFFFFFF);
         mItemSpace = a.getDimensionPixelSize(R.styleable.WheelPicker_scroll_item_space,
                 getResources().getDimensionPixelSize(R.dimen.WheelItemSpace));
         hasIndicator = a.getBoolean(R.styleable.WheelPicker_scroll_indicator, false);
