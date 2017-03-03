@@ -54,6 +54,17 @@ data.add("France");
 ```java
 scrollChoice.addItems(data,5);
 ```
+
+**Attach listener to listen to know which item was selected**
+```java
+scrollChoice.setOnItemSelectedListener(new ScrollChoice.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(ScrollChoice scrollChoice, int position, String name) {
+                Log.d("webi",name);
+            }
+        });
+```
+
 Here 5 is the index of default selected item.
 
 # Customization Through XML
@@ -61,7 +72,7 @@ Here 5 is the index of default selected item.
 <!--Change background Color-->
     app:scroll_background_color="#212121"
 <!--Change selected item's background -->
-    app:scroll_slected_item_background="#000000"
+    app:scroll_selected_item_background="#000000"
 <!--Change text color-->
     app:scroll_item_text_color="#f5f5f5"
 <!--Show/Hide atmospheric gradient effect on top-bottom items-->
