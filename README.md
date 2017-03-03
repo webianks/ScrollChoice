@@ -19,6 +19,14 @@ compile 'com.webianks.library:scroll-choice:1.0.0'
 </dependency>
 ```
 
+#Add ScrollChoice to layout
+```xml
+<com.webianks.library.scroll_choice.ScrollChoice
+        android:id="@+id/scroll_choice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+```
+
 **Based on the awesome WheelPicker taken from <a href="https://github.com/florent37/SingleDateAndTimePicker" target="_blank" >SingleDateAndTimePicker</a> by <a href="https://github.com/florent37" target="_blank">Florent CHAMPIGNY</a>.**
 
 ## License
