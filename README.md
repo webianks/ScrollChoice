@@ -54,6 +54,33 @@ data.add("France");
 ```java
 scrollChoice.addItems(data,5);
 ```
+Here 5 is the index of default selected item.
+
+# Customization Through XML
+```xml
+<!--Change background Color-->
+    app:scroll_background_color="#212121"
+<!--Change selected item's background -->
+    app:scroll_slected_item_background="#000000"
+<!--Change text color-->
+    app:scroll_item_text_color="#f5f5f5"
+<!--Show/Hide atmospheric gradient effect on top-bottom items-->
+    app:scroll_atmospheric="true"
+<!--Hide/show scroll indicator-->
+    app:scroll_indicator="true"
+<!--Change indicator color-->
+    app:scroll_indicator_color="#000000"
+<!--Align all items-->
+    app:scroll_item_align="center"
+<!--Set selected item's text color-->
+    app:scroll_selected_item_text_color="?attr/colorPrimary"
+<!--Set selected item position-->
+    app:scroll_selected_item_position="center"
+<!--Set different text size-->
+    app:scroll_item_text_size="17sp"
+<!--Set different indicator size-->
+    app:scroll_indicator_size="1dp"      
+```
 
 
 **Based on the awesome WheelPicker taken from <a href="https://github.com/florent37/SingleDateAndTimePicker" target="_blank" >SingleDateAndTimePicker</a> by <a href="https://github.com/florent37" target="_blank">Florent CHAMPIGNY</a>.**
