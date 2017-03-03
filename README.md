@@ -5,7 +5,7 @@ Scrollable view which can be used to give different choices to user with nice ui
 <img src="https://github.com/webianks/ScrollChoice/blob/master/screens/screen_one.png" align="left" height="700" width="400" >
 <img src="https://github.com/webianks/ScrollChoice/blob/master/screens/screen_two.png" height="700" width="400" >
 
-#Add With Gradle Dependency
+# Add With Gradle Dependency
 ```groovy
 compile 'com.webianks.library:scroll-choice:1.0.0'
 ```
@@ -19,13 +19,42 @@ compile 'com.webianks.library:scroll-choice:1.0.0'
 </dependency>
 ```
 
-#Add ScrollChoice to layout
+# Add ScrollChoice to layout
 ```xml
 <com.webianks.library.scroll_choice.ScrollChoice
         android:id="@+id/scroll_choice"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 ```
+
+# From Java
+
+**Get the reference of ScrollChoice**
+```java
+ScrollChoice scrollChoice = (ScrollChoice) findViewById(R.id.scroll_choice);
+```
+**Prepare your list items**
+
+```java
+List<String> data = new ArrayList<>();
+data.add("Brazil");
+data.add("USA");
+data.add("China");
+data.add("Pakistan");
+data.add("Australia");
+data.add("India");
+data.add("Nepal");
+data.add("Sri Lanka");
+data.add("Spain");
+data.add("Italy");
+data.add("France");
+```
+
+**Add to the ScrollChoice object with default selected item index**
+```java
+scrollChoice.addItems(data,5);
+```
+
 
 **Based on the awesome WheelPicker taken from <a href="https://github.com/florent37/SingleDateAndTimePicker" target="_blank" >SingleDateAndTimePicker</a> by <a href="https://github.com/florent37" target="_blank">Florent CHAMPIGNY</a>.**
 
