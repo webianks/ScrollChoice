@@ -95,6 +95,11 @@ Here 5 is the index of default selected item.
     app:scroll_indicator_size="1dp"      
 ```
 
+# Test APK
+
+<a href="https://github.com/webianks/ScrollChoice/blob/master/test_apk/app-debug.apk"><img src="https://github.com/webianks/HatkeMessenger/blob/master/screens/download.png" height="74" width="50"></a>
+
+
 
 **Based on the awesome WheelPicker taken from <a href="https://github.com/florent37/SingleDateAndTimePicker" target="_blank" >SingleDateAndTimePicker</a> by <a href="https://github.com/florent37" target="_blank">Florent CHAMPIGNY</a>.**
 
