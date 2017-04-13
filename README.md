@@ -1,3 +1,5 @@
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ScrollChoice-orange.svg?style=flat-square)](https://android-arsenal.com/details/1/5398)
+
 # ScrollChoice
 Scrollable view which can be used to give different choices to user with nice ui.
 
@@ -7,14 +9,14 @@ Scrollable view which can be used to give different choices to user with nice ui
 
 # Add With Gradle Dependency
 ```groovy
-compile 'com.webianks.library:scroll-choice:1.0.0'
+compile 'com.webianks.library:scroll-choice:1.0.1'
 ```
 **Maven:**
 ```xml
 <dependency>
   <groupId>com.webianks.library</groupId>
   <artifactId>scroll-choice</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
