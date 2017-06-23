@@ -20,6 +20,11 @@ compile 'com.webianks.library:scroll-choice:1.0.1'
   <type>pom</type>
 </dependency>
 ```
+# Min SDK
+15
+
+# Compile SDK
+25
 
 # Add ScrollChoice to layout
 ```xml
