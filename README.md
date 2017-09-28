@@ -1,4 +1,6 @@
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ScrollChoice-orange.svg?style=flat-square)](https://android-arsenal.com/details/1/5398)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ScrollChoice-red.svg?style=flat)](https://android-arsenal.com/details/1/5398)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/webianks/ScrollChoice/blob/master/LICENSE)
 
 # ScrollChoice
 Scrollable view which can be used to give different choices to user with nice ui.
