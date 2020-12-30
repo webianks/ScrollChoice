@@ -1,9 +1,5 @@
 package com.webianks.library.scroll_choice;
 
-/**
- * Created by R Ankit on 17-02-2017.
- */
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
@@ -28,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Created by R Ankit on 17-02-2017.
+ */
 public abstract class WheelPicker extends View {
 
     public static final int SCROLL_STATE_IDLE = 0;
@@ -41,16 +40,17 @@ public abstract class WheelPicker extends View {
     private final Handler handler = new Handler();
     private final Paint paintBackground;
 
-    private Paint paint;
-    private Scroller scroller;
+    private final Paint paint;
+    private final Scroller scroller;
     private VelocityTracker tracker;
 
     private OnItemSelectedListener onItemSelectedListener;
     private OnWheelChangeListener onWheelChangeListener;
 
-    private Rect rectDrawn;
-    private Rect rectIndicatorHead, rectIndicatorFoot;
-    private Rect rectCurrentItem;
+    private final Rect rectDrawn;
+    private final Rect rectIndicatorHead;
+    private final Rect rectIndicatorFoot;
+    private final Rect rectCurrentItem;
 
     private BaseAdapter adapter;
     private String maxWidthText;
@@ -84,10 +84,10 @@ public abstract class WheelPicker extends View {
     private boolean isClick;
     private boolean isForceFinishScroll;
 
-    private int backgroundColor;
-    private int backgroundOfSelectedItem;
+    private final int backgroundColor;
+    private final int backgroundOfSelectedItem;
 
-    private Runnable runnable = new Runnable() {
+    private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
             if (null == adapter) return;
@@ -354,7 +354,7 @@ public abstract class WheelPicker extends View {
             if (hasAtmospheric) {
                 int alpha =
                         (int) ((drawnCenterY - Math.abs(drawnCenterY - mDrawnItemCenterY)) * 1.0F / drawnCenterY * 255);
-                alpha = alpha < 0 ? 0 : alpha;
+                alpha = Math.max(alpha, 0);
                 paint.setAlpha(alpha);
             }
             // Correct item's drawn centerY base on curved state
@@ -375,9 +375,7 @@ public abstract class WheelPicker extends View {
                 canvas.clipRect(rectCurrentItem);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
                 canvas.restore();
-
             } else {
-
                 canvas.save();
                 canvas.clipRect(rectDrawn);
                 canvas.drawText(data, drawnCenterX, drawnCenterY, paint);
@@ -516,7 +514,7 @@ public abstract class WheelPicker extends View {
         }
     }
 
-    private final void onItemSelected() {
+    private void onItemSelected() {
         int position = currentItemPosition;
         final Object item = this.adapter.getItem(position);
         if (null != onItemSelectedListener) {
@@ -785,7 +783,7 @@ public abstract class WheelPicker extends View {
     }
 
     public static class Adapter implements BaseAdapter {
-        private List data;
+        private final List data;
 
         public Adapter() {
             this(new ArrayList());

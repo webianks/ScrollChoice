@@ -1,18 +1,17 @@
 package com.webianks.library.scroll_choice;
 
-/**
- * Created by R Ankit on 17-02-2017.
- */
-
 import android.content.Context;
 import android.util.AttributeSet;
 import java.util.List;
 
+/**
+ * Created by R Ankit on 17-02-2017.
+ */
 public class ScrollChoice extends WheelPicker {
 
     private OnItemSelectedListener onItemSelectedListener;
 
-    WheelPicker.Adapter adapter;
+    final WheelPicker.Adapter adapter;
     private int defaultIndex;
 
     public ScrollChoice(Context context) {

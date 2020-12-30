@@ -11,14 +11,14 @@ Scrollable view which can be used to give different choices to user with nice ui
 
 # Add With Gradle Dependency
 ```groovy
-compile 'com.webianks.library:scroll-choice:1.0.1'
+implementation 'com.webianks.library:scroll-choice:1.0.2'
 ```
 **Maven:**
 ```xml
 <dependency>
   <groupId>com.webianks.library</groupId>
   <artifactId>scroll-choice</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 ```
@@ -26,7 +26,7 @@ compile 'com.webianks.library:scroll-choice:1.0.1'
 15
 
 # Compile SDK
-25
+29
 
 # Add ScrollChoice to layout
 ```xml
@@ -61,7 +61,7 @@ data.add("France");
 
 **Add to the ScrollChoice object with default selected item index**
 ```java
-scrollChoice.addItems(data,5);
+scrollChoice.addItems(data, 5);
 ```
 
 **Attach listener to listen to know which item was selected**
